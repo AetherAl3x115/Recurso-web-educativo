@@ -20,7 +20,7 @@ RUN composer install --optimize-autoloader --no-scripts --no-interaction
 
 EXPOSE 8000
 
-CMD php artisan key:generate && \
-    php artisan config:cache && \
+CMD php artisan config:cache && \
     php artisan route:cache && \
+    php artisan migrate --force && \
     php artisan serve --host=0.0.0.0 --port=8000
